@@ -50,6 +50,7 @@ let playRound = (playerSelection = playerPlay(), computerSelection = computerPla
                 console.log("Computer Wins! Scissors beats Paper.")
                 computerScore++;
             }
+            break;
         case "scissors":
             if (computerSelection === "Rock") {
                 console.log("Computer Wins! Rock beats Scissors.")
@@ -60,6 +61,7 @@ let playRound = (playerSelection = playerPlay(), computerSelection = computerPla
             } else {
                 console.log("It's a tie!")
             }
+            break;
     }
 }
 
