@@ -2,11 +2,15 @@ let computerScore = 0;
 let playerScore = 0;
 let counter = 0;
 let playerClicked = document.querySelectorAll('button');
+let results = document.createElement('div');
+let body = document.querySelector('body');
+let score = document.createElement('div');
 
 playerClicked.forEach(item => {
     item.addEventListener('click', e => {
         choice = e.target.innerText;
-        playRound(choice)
+        playRound(choice);
+        score.innerText = `Score: ${playerScore}-${computerScore}`;
     })
 })
 
@@ -30,43 +34,70 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
     switch (playerSelection) {
         case "rock":
             if (computerSelection === "Rock") {
-                console.log("It's a tie!");
+                results.innerText = "It's a tie!";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 counter++;
             } else if (computerSelection === "Paper") {
-                console.log("Computer Wins! Paper beats Rock,");
+                results.innerText = "Computer Wins! Paper beats Rock,";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 computerScore++;
                 counter++;
             } else {
-                console.log("You Win! Rock beats Scissors.");
+                results.innerText = "You Win! Rock beats Scissors.";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 playerScore++;
                 counter++;
             }
             break;
         case "paper":
             if (computerSelection === "Rock") {
-                console.log("You Win! Paper beats Rock.");
+                results.innerText = "You Win! Paper beats Rock.";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 playerScore++;
                 counter++;
             } else if (computerSelection === "Paper") {
-                console.log("It's a tie!");
+                results.innerText = "It's a tie!";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 counter++;
             } else {
-                console.log("Computer Wins! Scissors beats Paper.");
+                results.innerText = "Computer Wins! Scissors beats Paper.";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 computerScore++;
                 counter++;
             }
             break;
         case "scissors":
             if (computerSelection === "Rock") {
-                console.log("Computer Wins! Rock beats Scissors.");
+                results.innerText = "Computer Wins! Rock beats Scissors.";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 computerScore++;
                 counter++;
             } else if (computerSelection === "Paper") {
-                console.log("You Win! Scissors beats Paper.");
+                results.innerText = "You Win! Scissors beats Paper.";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 playerScore++;
                 counter++;
             } else {
-                console.log("It's a tie!");
+                results.innerText = "It's a tie!";
+                body.append(results);
+                score.innerText = `Score: ${playerScore}-${computerScore}`;
+                body.append(score);
                 counter++;
             }
             break;
@@ -74,13 +105,22 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
 
     if (counter == 5) {
         if (playerScore > computerScore) {
-            console.log("You win the game!")
+            results.innerText = "You win the game!";
+            body.append(results);
+            score.innerText = `Score: ${playerScore}-${computerScore}`;
+            body.append(score);
             reset();
         } else if (computerScore > playerScore) {
-            console.log("Computer Wins the game!")
+            results.innerText = "Computer Wins the game!";
+            body.append(results);
+            score.innerText = `Score: ${playerScore}-${computerScore}`;
+            body.append(score);
             reset();
         } else {
-            console.log("It's a tie! No one wins!")
+            results.innerText = "It's a tie! No one wins!";
+            body.append(results);
+            score.innerText = `Score: ${playerScore}-${computerScore}`;
+            body.append(score);
             reset();
         }
     }
@@ -91,3 +131,4 @@ let reset = () => {
     computerScore = 0;
     counter = 0;
 }
+
