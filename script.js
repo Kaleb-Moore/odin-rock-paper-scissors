@@ -3,7 +3,8 @@ let playerScore = 0;
 let counter = 0;
 let playerClicked = document.querySelectorAll('button');
 let results = document.createElement('div');
-let winner = document.createElement('div')
+let winner = document.createElement('div');
+let victor = document.querySelector('.victor');
 let body = document.querySelector('.content');
 let score = document.createElement('div');
 
@@ -107,25 +108,39 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
         if (playerScore > computerScore) {
             winner.classList.add('winner');
             winner.innerText = "You win the game!";
-            body.append(winner);
+            victor.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
             reset();
         } else if (computerScore > playerScore) {
             winner.classList.add('winner');
             winner.innerText = "Computer Wins the game!";
-            body.append(winner);
+            victor.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
             reset();
         } else {
             winner.classList.add('winner');
             winner.innerText = "It's a tie! No one wins!";
-            body.append(winner);
+            victor.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
             reset();
         }
+    } else if (playerScore == 3) {
+        winner.classList.add('winner');
+        winner.innerText = "You win the game!";
+        victor.append(winner);
+        score.innerText = `Score: ${playerScore}-${computerScore}`;
+        body.append(score);
+        reset();
+    } else if (computerScore == 3) {
+        winner.classList.add('winner');
+        winner.innerText = "Computer wins the game!";
+        victor.append(winner);
+        score.innerText = `Score: ${playerScore}-${computerScore}`;
+        body.append(score);
+        reset();
     }
 }
 
