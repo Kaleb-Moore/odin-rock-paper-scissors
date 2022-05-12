@@ -4,7 +4,7 @@ let counter = 0;
 let playerClicked = document.querySelectorAll('button');
 let results = document.createElement('div');
 let winner = document.createElement('div')
-let body = document.querySelector('body');
+let body = document.querySelector('.content');
 let score = document.createElement('div');
 
 playerClicked.forEach(item => {
@@ -26,7 +26,7 @@ let computerPlay = () => {
     } else {
         computer = "Scissors"
     }
-
+    
     return computer;
 }
 
@@ -105,20 +105,26 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
 
     if (counter == 5) {
         if (playerScore > computerScore) {
+            winner.classList.add('winner');
             winner.innerText = "You win the game!";
             body.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
+            reset();
         } else if (computerScore > playerScore) {
+            winner.classList.add('winner');
             winner.innerText = "Computer Wins the game!";
             body.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
+            reset();
         } else {
+            winner.classList.add('winner');
             winner.innerText = "It's a tie! No one wins!";
             body.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
+            reset();
         }
     }
 }
