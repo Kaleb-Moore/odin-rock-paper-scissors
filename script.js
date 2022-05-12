@@ -3,6 +3,7 @@ let playerScore = 0;
 let counter = 0;
 let playerClicked = document.querySelectorAll('button');
 let results = document.createElement('div');
+let winner = document.createElement('div')
 let body = document.querySelector('body');
 let score = document.createElement('div');
 
@@ -10,7 +11,6 @@ playerClicked.forEach(item => {
     item.addEventListener('click', e => {
         choice = e.target.innerText;
         playRound(choice);
-        score.innerText = `Score: ${playerScore}-${computerScore}`;
     })
 })
 
@@ -42,16 +42,16 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
             } else if (computerSelection === "Paper") {
                 results.innerText = "Computer Wins! Paper beats Rock,";
                 body.append(results);
+                computerScore++;
                 score.innerText = `Score: ${playerScore}-${computerScore}`;
                 body.append(score);
-                computerScore++;
                 counter++;
             } else {
                 results.innerText = "You Win! Rock beats Scissors.";
                 body.append(results);
+                playerScore++;
                 score.innerText = `Score: ${playerScore}-${computerScore}`;
                 body.append(score);
-                playerScore++;
                 counter++;
             }
             break;
@@ -59,9 +59,9 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
             if (computerSelection === "Rock") {
                 results.innerText = "You Win! Paper beats Rock.";
                 body.append(results);
+                playerScore++;
                 score.innerText = `Score: ${playerScore}-${computerScore}`;
                 body.append(score);
-                playerScore++;
                 counter++;
             } else if (computerSelection === "Paper") {
                 results.innerText = "It's a tie!";
@@ -72,9 +72,9 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
             } else {
                 results.innerText = "Computer Wins! Scissors beats Paper.";
                 body.append(results);
+                computerScore++;
                 score.innerText = `Score: ${playerScore}-${computerScore}`;
                 body.append(score);
-                computerScore++;
                 counter++;
             }
             break;
@@ -82,16 +82,16 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
             if (computerSelection === "Rock") {
                 results.innerText = "Computer Wins! Rock beats Scissors.";
                 body.append(results);
+                computerScore++;
                 score.innerText = `Score: ${playerScore}-${computerScore}`;
                 body.append(score);
-                computerScore++;
                 counter++;
             } else if (computerSelection === "Paper") {
                 results.innerText = "You Win! Scissors beats Paper.";
                 body.append(results);
+                playerScore++;
                 score.innerText = `Score: ${playerScore}-${computerScore}`;
                 body.append(score);
-                playerScore++;
                 counter++;
             } else {
                 results.innerText = "It's a tie!";
@@ -105,23 +105,20 @@ let playRound = (playerSelection, computerSelection = computerPlay()) => {
 
     if (counter == 5) {
         if (playerScore > computerScore) {
-            results.innerText = "You win the game!";
-            body.append(results);
+            winner.innerText = "You win the game!";
+            body.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
-            reset();
         } else if (computerScore > playerScore) {
-            results.innerText = "Computer Wins the game!";
-            body.append(results);
+            winner.innerText = "Computer Wins the game!";
+            body.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
-            reset();
         } else {
-            results.innerText = "It's a tie! No one wins!";
-            body.append(results);
+            winner.innerText = "It's a tie! No one wins!";
+            body.append(winner);
             score.innerText = `Score: ${playerScore}-${computerScore}`;
             body.append(score);
-            reset();
         }
     }
 }
